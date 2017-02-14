@@ -7,6 +7,11 @@ var config = {
   entry: {
     app: './app.js',
   },
+  output: {
+    path: path.resolve(__dirname, 'app/dist'), // `dist` is the destination
+    filename: '[name].bundle.js',
+    publicPath: '/assets',
+  },
   module: {
     rules: [
       {
@@ -17,15 +22,9 @@ var config = {
           options: { presets: ['es2015'] }
         }]
       },
-      { // regular css files
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          use: 'css-loader?importLoaders=1',
-        }),
-      },
       {
         test: /\.(sass|scss)$/, //Check for sass or scss file names
-        use: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+        loader: ExtractTextPlugin.extract([ 'style-loader', 'css-loader', 'sass-loader']),
       },
       {
         test: /\.json$/,
@@ -37,14 +36,9 @@ var config = {
   plugins: [
     new ExtractTextPlugin({ // define where to save the file
       filename: '[name].bundle.css',
-      allChunks: true,
+      allChunks: true
     }),
   ],
-  output: {
-    path: path.resolve(__dirname, 'app/dist'), // `dist` is the destination
-    filename: '[name].bundle.js',
-    publicPath: '/assets',
-  },
   devServer: {
     open: true,
     contentBase: path.resolve(__dirname, './app'),  // New
