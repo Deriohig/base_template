@@ -1,18 +1,54 @@
-const path = require('path');
-const webpack = require('webpack');
+var path = require('path');
+var webpack = require('webpack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-
-module.exports = {
+var config = {
  context: path.resolve(__dirname, './app'), // `__dirname` is root of project and `src` is source
   entry: {
     app: './app.js',
   },
+  module: {
+    rules: [
+      {
+        test: /\.js$/, //Check for all js files
+        exclude: /(node_modules)/,
+        use: [{
+          loader: 'babel-loader',
+          options: { presets: ['es2015'] }
+        }]
+      },
+      { // regular css files
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          use: 'css-loader?importLoaders=1',
+        }),
+      },
+      {
+        test: /\.(sass|scss)$/, //Check for sass or scss file names
+        use: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+      },
+      {
+        test: /\.json$/,
+        use: "json-loader"  //JSON loader
+      },
+
+    ],
+  },
+  plugins: [
+    new ExtractTextPlugin({ // define where to save the file
+      filename: '[name].bundle.css',
+      allChunks: true,
+    }),
+  ],
   output: {
     path: path.resolve(__dirname, 'app/dist'), // `dist` is the destination
     filename: '[name].bundle.js',
     publicPath: '/assets',
   },
   devServer: {
+    open: true,
     contentBase: path.resolve(__dirname, './app'),  // New
   },
 };
+
+module.exports = config;
