@@ -24,7 +24,7 @@ var config = {
       },
       {
         test: /\.(sass|scss)$/, //Check for sass or scss file names
-        loader: ExtractTextPlugin.extract([ 'style-loader', 'css-loader', 'sass-loader']),
+        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader']),
       },
       {
         test: /\.json$/,

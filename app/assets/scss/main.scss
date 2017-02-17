@@ -1,18 +1,8 @@
 
-body {
-    font-size: 33px;
 
-    h1{
-        font-weight: bolder;
-            font-size: 80px;
-    }
-    h3{
-        font-size: 30px;
-    }
-    a{
-        color:red;
-    }
-    .we-are-lit{
-        background-color: blue;
-    }
-}
+
+@import "common/_variables";
+@import "common/_normalize";
+@import "common/_grid";
+@import "common/_global";
+@import "common/_typography";
