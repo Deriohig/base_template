@@ -23,6 +23,11 @@ var config = {
         }]
       },
       {
+               test   : /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+            //   loader: 'file-loader'
+               loader: 'file?name=public/fonts/[name].[ext]'
+      },
+      {
         test: /\.(sass|scss)$/, //Check for sass or scss file names
         loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader']),
       },

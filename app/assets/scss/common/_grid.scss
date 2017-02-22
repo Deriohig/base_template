@@ -6,7 +6,6 @@
   padding-right: 2rem;
   padding-left: 2rem;
 }
-
 .row {
   box-sizing: border-box;
   display: -ms-flexbox;
@@ -21,8 +20,8 @@
   flex-direction: row;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -1rem;
-  margin-left: -1rem;
+  margin-right: -2rem;
+  margin-left: -2rem;
 }
 
 .row.reverse {

@@ -980,37 +980,39 @@
   animation: $name $duration $easing $delay $iteration $endState;
 }
 
+
 @mixin animation($animate...) {
-  $max: length($animate);
-  $animations: '';
+    $max: length($animate);
+    $animations: '';
 
-  @for $i from 1 through $max {
-    $animations: #{$animations + nth($animate, $i)};
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
 
-    @if $i < $max {
-      $animations: #{$animations + ", "};
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
     }
-  }
-  -webkit-animation: $animations;
-  -moz-animation:    $animations;
-  -o-animation:      $animations;
-  animation:         $animations;
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
 }
 
 @mixin keyframes($animationName) {
-  @-webkit-keyframes #{$animationName} {
-    @content;
-  }
-  @-moz-keyframes #{$animationName} {
-    @content;
-  }
-  @-o-keyframes #{$animationName} {
-    @content;
-  }
-  @keyframes #{$animationName} {
-    @content;
-  }
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
 }
+
 
 @mixin scaleXY($x,$y) {
   -webkit-transform: scale($x,$y);
@@ -1399,4 +1401,56 @@
       background: #fff;
     }
   }
+}
+
+
+@-webkit-keyframes Wletters {
+    0% {
+          color:  #fff;
+        opacity:1;
+    }
+    15% {
+        color: #03a9f4;
+    }
+    30% {
+        color:#00bcd4;
+    }
+    45% {
+        color:#cddc39 ;
+    }
+    65% {
+        color: #ffeb3b;
+    }
+    80% {
+        color: #ff5722;
+    }
+    100%{
+        color: #fff;
+    }
+}
+
+@-webkit-keyframes border {
+
+    0% {
+        border-color:  $logo-primary;
+        opacity:1;
+    }
+    15% {
+        border-color: #03a9f4;
+    }
+    30% {
+        border-color:#00bcd4;
+    }
+    45% {
+        border-color:#cddc39 ;
+    }
+    65% {
+        border-color: #ffeb3b;
+    }
+    80% {
+        border-color: #f44336;
+    }
+    100%{
+        border-color: $logo-primary;
+    }
 }

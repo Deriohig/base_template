@@ -1,3 +1,30 @@
 .container{
   margin: 0 auto;
+  display: flex;
+  max-width: calculateRem(1800px);
+
+}
+.container-fluid:after, .container-fluid:before {
+    content: " ";
+    display: table;
+}
+.block{display: inherit;}
+.wrap{
+
+  position: relative;
+  @media(max-width:$screen-sm){
+    padding-left: 3rem;
+    padding-right:3rem;
+  }
+}
+body{
+  background-color:$b;
+  padding: 4% 8%;
+  @media(max-width:$screen-md){
+    padding: 3% 4%;
+  }
+  @media(max-width:$screen-sm){
+    padding: 0%;
+  }
+
 }
