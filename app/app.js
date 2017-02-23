@@ -8,11 +8,13 @@ import moment from 'moment';
 
 var rightNow = moment().format('MMMM Do YYYY, h:mm:ss a');
 
-console.log(window.innerWidth);
+var loader = document.getElementsByClassName("loader-model")[0];
 
+loader.style.display = "block";
 
-
-
+window.onload = function() {
+        loader.style.display = "none";
+};
 
 // Animation text
 var prefix = 'Yo, Im Deri and I Love <br>';
@@ -121,3 +123,86 @@ function render() {
     setTimeout(render, timeout);
 }
 setTimeout(render, 500);
+
+var Doggo ={
+
+    load: function(url, callback){
+
+        var xhr;
+
+       if(typeof XMLHttpRequest !== 'undefined') xhr = new XMLHttpRequest();
+       else {
+           var versions = ["MSXML2.XmlHttp.5.0",
+                           "MSXML2.XmlHttp.4.0",
+                           "MSXML2.XmlHttp.3.0",
+                           "MSXML2.XmlHttp.2.0",
+                           "Microsoft.XmlHttp"];
+
+            for(var i = 0, len = versions.length; i < len; i++) {
+               try {
+                   xhr = new ActiveXObject(versions[i]);
+
+                   break;
+               }
+               catch(e){}
+            } // end for
+       }
+
+
+       xhr.onreadystatechange = ensureReadiness;
+
+       function ensureReadiness() {
+           if(xhr.readyState < 4) {
+               return;
+           }
+
+           if(xhr.status !== 200) {
+               return;
+           }
+
+           // all is well
+           if(xhr.readyState === 4) {
+               callback(xhr);
+           }
+       }
+
+       xhr.open('GET', url, true);
+       xhr.setRequestHeader('Content-Type', 'application/json');
+       xhr.setRequestHeader("Authorization","Client-ID 08cbf6378b57d52");
+       xhr.send('');
+
+    },
+    getDoggoGallery: function(){
+
+        var doggoUrl = "https://api.imgur.com/3/gallery/search?q=" + "{Doggo}";
+
+        var whichDoggo= Math.floor(Math.random()*(60+1));
+
+        Doggo.load(doggoUrl, function(xhr){
+
+            var response = JSON.parse(xhr.response);
+
+            var id = response.data[whichDoggo].id;
+
+            Doggo.getDoggo(id);
+        });
+
+    },
+    getDoggo:function(ID){
+
+            var doggoUrl = "https://api.imgur.com/3/gallery/" + ID;
+
+            Doggo.load(doggoUrl, function(xhr){
+
+                var response = JSON.parse(xhr.response);
+                console.log(response);
+
+                var imgUrl = response.data.images[0].link;
+                var imageHolder =  document.getElementsByClassName("doggo")[0];
+                imageHolder.setAttribute("src", imgUrl);
+            });
+    }
+
+
+};
+Doggo.getDoggoGallery();

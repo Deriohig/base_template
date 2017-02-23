@@ -13,6 +13,13 @@
     left:50%;
     transform: translate(-50%,-50%);
   }
+  .big-body{
+    padding:0 5px;
+    font-family: "Logofont", sans-serif;
+    margin: 0;
+    text-align: center;
+    color:white;
+  }
 }
 
 $loading-duration: 1.75s;

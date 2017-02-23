@@ -33,11 +33,12 @@
       list-style: none;
       display:flex;
       li{
-        text-transform: uppercase;
-        letter-spacing: 0.125em;
-        color:white;
+        letter-spacing: 0.1em;
+        color: white;
+
+        font-weight: 300;
         line-height:$gutter;
-        margin:$gutter $gutter-half;
+        margin:$gutter 15px;
         a{
           color: white;
           text-decoration: none;

@@ -10,12 +10,17 @@
 }
 .block{display: inherit;}
 .wrap{
-
+  padding:0;
   position: relative;
   @media(max-width:$screen-sm){
     padding-left: 3rem;
     padding-right:3rem;
   }
+    @media(max-width:$screen-sm){
+      padding-left: 1.5rem;
+      padding-right:1.5rem;
+    }
+
 }
 body{
   background-color:$b;
