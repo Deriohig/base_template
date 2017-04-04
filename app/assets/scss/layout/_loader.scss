@@ -1,3 +1,13 @@
+$loading-duration: 1.75s;
+/* Initial values */
+$loading-size-initial: 1em;
+$loading-color-initial: $b;
+/* Full values */
+$loading-size-full: 6em;
+$loading-color-full: lighten($b, 50%);
+
+
+
 .loader-model{
   display: none;
   position: fixed;
@@ -14,22 +24,13 @@
     transform: translate(-50%,-50%);
   }
   .big-body{
-    padding:0 5px;
+    padding:5px 0px;
     font-family: "Logofont", sans-serif;
     margin: 0;
     text-align: center;
     color:white;
   }
 }
-
-$loading-duration: 1.75s;
-/* Initial values */
-$loading-size-initial: 1em;
-$loading-color-initial: $b;
-/* Full values */
-$loading-size-full: 6em;
-$loading-color-full: lighten($b, 50%);
-
 .loading {
   position:absolute;
   top:50%;
@@ -61,5 +62,48 @@ $loading-color-full: lighten($b, 50%);
 
   100% {
     transform:rotate(360deg);
+  }
+}
+.logo-loader{
+  background-color:$t;
+  display: inline-block;
+  padding: 15px 25px 15px 25px;
+  cursor: pointer;
+  h1.name{
+    margin: 0;
+    font-family: "Logofont", sans-serif;;
+    font-size:35px;
+    text-transform: uppercase;
+    line-height:1;
+    text-align: center;
+    padding-top: 10px;
+    padding:10px 0px;
+    letter-spacing: .1em;
+    color:$logo-primary;
+    br{
+      display:none;
+    }
+
+    .d{
+        @include animation('logo-loader 1s 99');
+        -webkit-animation-delay: 0s;
+         animation-delay: 0s;
+    }
+    .e{
+      @include animation('logo-loader 1s 99');
+      -webkit-animation-delay: .25s;
+       animation-delay: .25s;
+    }
+    .r{
+      @include animation('logo-loader 1s 99')
+      -webkit-animation-delay: .5s;
+       animation-delay: .5s;
+
+    }
+    .i{
+      @include animation('logo-loader 1s 99');
+      -webkit-animation-delay: .75s;
+       animation-delay: .75s;
+    }
   }
 }

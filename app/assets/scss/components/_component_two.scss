@@ -1,6 +1,10 @@
 .component-two{
   background-color: white;
 
+  .image-holder{
+    background-position: center center;
+    background-size: cover;
+  }
   img{
     max-width: 100%;
   }

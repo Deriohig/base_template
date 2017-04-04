@@ -1,12 +1,10 @@
-.container{
-  margin: 0 auto;
-  display: flex;
-  max-width: calculateRem(1800px);
 
-}
 .container-fluid:after, .container-fluid:before {
     content: " ";
     display: table;
+}
+.container-fluid{
+  max-width: 1000px;
 }
 .block{display: inherit;}
 .wrap{
@@ -23,13 +21,20 @@
 
 }
 body{
-  background-color:$b;
-  padding: 4% 8%;
-  @media(max-width:$screen-md){
-    padding: 3% 4%;
-  }
-  @media(max-width:$screen-sm){
-    padding: 0%;
-  }
+  // background-color:$b;
+  // padding: 4% 8%;
+  // @media(max-width:$screen-md){
+  //   padding: 3% 4%;
+  // }
+  // @media(max-width:$screen-sm){
+  //   padding: 0%;
+  // }
 
+}
+
+
+.image-mask{
+  height:100%;
+  visibility:hidden;
+  max-height: 350px;
 }
