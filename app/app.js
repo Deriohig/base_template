@@ -3,6 +3,7 @@ import styles from './assets/scss/main.scss';
 
 var isLoading = false;
 
+
 var loader = document.getElementsByClassName("loader-model")[0];
 loader.style.display = "block";
 
@@ -218,7 +219,6 @@ var Doggo = {
             var response = JSON.parse(xhr.response);
 
             if (response === null || response === undefined) {
-                console.log("Yo, Your doggo died on the way to the vet, the poor pupper... ");
                 componentTwo = document.getElementsByClassName("component-two");
                 componentTwo.style.display = "none";
                 return;
@@ -235,16 +235,13 @@ var Doggo = {
 
         Doggo.load(doggoUrl, function(xhr) {
 
-            var response = JSON.parse(xhr.response);
-            console.log(response);
+            let response = JSON.parse(xhr.response);
 
             if (response === null || response === undefined) {
-                console.log("Yo, Your doggo died on the way to the vet, the poor pupper... ");
                 componentTwo.style.display = "none";
                 return;
             }
             if (response.data.images[0].link === null || response.data.images[0].link === undefined) {
-                console.log("Yo, Your doggo died on the way to the vet, the poor pupper... ");
                 componentTwo.style.display = "none";
                 return;
             }
@@ -261,14 +258,214 @@ var Doggo = {
 
 };
 
-if(jQuery('.component-two').length){
+if (document.getElementsByClassName('component-two') > 0) {
     Doggo.getDoggoGallery();
 }
 
-var pgurl = window.location.href.substr(window.location.href
-.lastIndexOf("/")+1);
-     jQuery(".nav-list li a").each(function(){
-         console.log(jQuery(this).attr("href").lastIndexOf("/")+ 1 + " lamda " + pgurl);
-          if(jQuery(this).attr("href").substr(jQuery(this).attr("href").lastIndexOf("/")+1) == pgurl || jQuery(this).attr("href") == '' )
-          jQuery(this).addClass("active");
-     })
+const pgurl = window.location.href.substr(window.location.href.lastIndexOf("/") + 1);
+
+const elements = document.querySelectorAll(".nav-list li a");
+
+
+elements.forEach(function(elem, index) {
+    if (elem.href.substr(elem.href.lastIndexOf("/") + 1) == pgurl || elem.href == ''){
+        elem.classList.add("active");
+    }
+})
+
+
+function mapPointsToImage(points, element){
+    points.map(function(point, index){
+        // create ugly but fast html element with values
+        let flip= "";
+
+        if(point.xAxis > 55){
+            flip = "flip-side";
+        }
+
+        let mapItem =
+                        "<a class='location' href='#' data-attr='location-point-" + index + "' data-x='"+ point.xAxis + "%' data-y='"+ point.yAxis +"%' style='left: " + point.xAxis + "%; top:" + point.yAxis + "%' ></a> " +
+                        "<div class='info-block col-lg-4 col-md-4 " + flip + "' data-attr='location-point-" +  index + "' > "+
+                        " <div class='close-btn'><i class='fa fa-close'></i></div> <div class='text-area'> <h4> " + point.title + " </h4> <p class='p-14 bold text-brand-primary'>" + point.message + "</p></div></div>";
+                        element.querySelector('.image-holder').innerHTML += mapItem;
+    });
+
+    document.querySelectorAll('.component-map-banner .info-block').forEach(function(elem, index) {
+        //jquery reference to this
+        let that = elem;
+        //get the individual data selector used to match the point and the block
+        let dataInfo = elem.getAttribute('data-attr');
+        //use the data to get the matching anchor
+        let selector = ".component-map-banner a.location[data-attr='" + dataInfo + "']";
+        //jquery reference the selector
+        let anchor = document.querySelector(selector);
+        //get the x and y cordinates of the anchor
+        let topPos = anchor.getAttribute('data-y');
+        let leftPos = anchor.getAttribute('data-x');
+        //place the div on the screen
+        that.style.left = leftPos;
+        that.style.top= topPos ;
+
+
+        // click event for locations
+        anchor.addEventListener('click', function(event) {
+
+            //prevent default event triggers and stop propagation
+            event.preventDefault();
+            event.stopPropagation();
+            // hide all info blocks that might be open
+            document.querySelectorAll('.component-map-banner .info-block').forEach(function(elem) {
+                elem.style.opacity = "0";
+                that.classList.remove('active');
+            });
+            document.querySelectorAll('.component-map-banner a.location').forEach(function(elem) {
+                // remove all active location points
+                elem.classList.remove('active');
+
+            });
+            //make this location point active
+            this.classList.add('active');
+            //add active to info block
+            that.classList.add('active');
+            // show the correct info block
+            elem.style.opacity = "1";
+        });
+        document.querySelectorAll('.close-btn').forEach(function(elem) {
+
+                elem.addEventListener('click', function() {
+                //jquery reference this
+                let closeBtn = this;
+                //hide the info block
+                closeBtn.parentNode.style.opacity = "0";
+                ///make the location points inactive
+                document.querySelectorAll('.component-map-banner a.location').forEach(function(elem) {
+                    // remove all active location points
+                    elem.classList.remove('active');
+                    //remove info block event
+                    that.classList.remove('active');
+                });
+            });
+        });
+    });
+
+    // add click event for button close
+
+}
+
+if (document.getElementsByClassName('component-map-banner')) {
+
+    const mapPoints = {
+        home: [{
+                title: "title",
+                xAxis: "80",
+                yAxis: "80",
+                message: "I grew up a screw up, got introdued to the game - got an ounce. I blew up. Fat stacks overnight, young brother biggie smalls gonna be the next Frank White."
+            },
+            {
+                title: "title",
+                xAxis: "50",
+                yAxis: "50",
+                message: "Point message"
+            },
+            {
+                title: "title",
+                xAxis: "10",
+                yAxis: "10",
+                message: "Point message"
+            },
+            {
+                title: "title",
+                xAxis: "20",
+                yAxis: "40",
+                message: "Point message"
+            },
+            {
+                title: "title",
+                xAxis: "20",
+                yAxis: "20",
+                message: "Point message"
+            },
+            {
+                title: "title",
+                xAxis: "90",
+                yAxis: "90",
+                message: "Point message"
+            },
+        ]
+    };
+
+
+    //loop page for elements
+    document.querySelectorAll('.component-map-banner').forEach(function(elem,index){
+
+        //get mapping data from section
+        var source = elem.getAttribute('map-data');
+
+        // get object and pass to map function
+        mapPointsToImage(mapPoints[source], elem);
+
+    });
+
+}
+
+
+function scrollFooter(scrollY, heightFooter)
+{
+    console.log(scrollY);
+    console.log(heightFooter);
+
+    if(scrollY >= heightFooter)
+    {
+        jQuery('footer').css({
+            'bottom' : '0px'
+        });
+    }
+    else
+    {
+        jQuery('footer').css({
+            'bottom' : '-' + heightFooter + 'px'
+        });
+    }
+}
+
+jQuery(document).ready(function(){
+    var windowHeight        = jQuery(window).height(),
+        footerHeight        = jQuery('footer').height(),
+        heightDocument      = (windowHeight) + (jQuery('.content').height()) + (jQuery('footer').height()) - 20;
+
+    // Definindo o tamanho do elemento pra animar
+    jQuery('#scroll-animate, #scroll-animate-main').css({
+        'height' :  heightDocument + 'px'
+    });
+
+    // Definindo o tamanho dos elementos header e conteúdo
+    jQuery('header').css({
+        'height' : windowHeight + 'px',
+        'line-height' : windowHeight + 'px'
+    });
+
+    jQuery('.wrapper-parallax').css({
+        'margin-top' : windowHeight + 'px'
+    });
+
+    scrollFooter(window.scrollY, footerHeight);
+
+    // ao dar rolagem
+    window.onscroll = function(){
+        var scroll = window.scrollY;
+
+        jQuery('#scroll-animate-main').css({
+            'top' : '-' + scroll + 'px'
+        });
+
+        jQuery('header').css({
+            'background-position-y' : 50 - (scroll * 100 / heightDocument) + '%'
+        });
+
+        scrollFooter(scroll, footerHeight);
+    }
+});
+
+
+
+// loop through the info block element

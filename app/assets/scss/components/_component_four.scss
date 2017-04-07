@@ -15,12 +15,12 @@
   .component-3-right {
     z-index:4;
     background-color: $black;
-    padding:$gutter-triple $gutter-double-half;
-    @media (max-width: $screen-md) {
-      padding:$gutter-double $gutter-one-half;
+    padding: 2% 8%;
+    @media(max-width:$screen-md){
+        padding: 2% 6%;
     }
-    @media (max-width: $screen-sm) {
-      padding:$gutter 0;
+    @media(max-width:$screen-sm){
+      padding: 0%;
     }
   }
 
@@ -66,16 +66,6 @@
     overflow: hidden;
     display: block;
     //padding-top: $grid-gutter-one-and-half-width;
-
-
-    @media (max-width: $screen-xs) {
-      padding: 0;
-    }
-
-    @media (max-width: $screen-sm) {
-      padding: 0 $gutter-half;
-    }
-
     .xl-title {
       font-size: 30px;
       //margin-top: $grid-gutter-three-times;

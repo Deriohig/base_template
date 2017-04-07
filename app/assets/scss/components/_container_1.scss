@@ -2,10 +2,12 @@
 .component-one{
   background-size: cover;
   background-position: center;
-  height:500px;
+  
   position: relative;
   margin:0;
   padding: 2% 8%;
+  height: 100vh;
+  max-height:100vh;
   @media(max-width:$screen-md){
       padding: 2% 4%;
   }
@@ -35,16 +37,17 @@
     // padding-right:$gutter;
     @media(max-width:$screen-sm){
        margin: 0 $gutter;
-      margin-top: 200px;
+      margin-top: 180px;
       // padding-left: $gutter;
     }
     @media(max-width: $screen-xs){
     margin: 0 ;
-      margin-top: 180px
+      margin-top: 160px
     }
     .i-am{
       text-align: left;
-      height:90px;
+      min-height:90px;
+      padding-bottom: 20px;
       font-family: "Raleway", sans-serif;
       font-weight: 600;
       font-size: 40px;
@@ -52,11 +55,11 @@
       text-transform: uppercase;
       margin:0;
       @media(max-width: $screen-sm){
-        height:100px;
+        min-height:100px;
         font-size:32px;
       }
       @media(max-width: $screen-xs){
-        height:130px;
+        min-height:100px;
         font-size:32px;
       }
     }

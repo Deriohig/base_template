@@ -99,7 +99,7 @@ h4, .s-title{
 
 .big-body{
   font-weight: 300;
-  font-size: 20px;
+  font-size: 22px;
   line-height: 2em;
   letter-spacing: 0em;
   p{
@@ -112,10 +112,10 @@ h4, .s-title{
     font-size: 18px;
   }
 }
-.main-body{
+p, .main-body{
   font-weight: 300;
-  font-size: 15px;
-  line-height: 2em;
+  font-size: 20px;
+  line-height: 1.4;
   letter-spacing: 0em;
   p{ font-weight: 300;
     font-size: 15px;
@@ -125,7 +125,7 @@ h4, .s-title{
 }
 .small-body{
   font-weight: 300;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 2em;
   letter-spacing: 0em;
   p{
@@ -171,4 +171,40 @@ h4, .s-title{
   font-size: 10px;
   letter-spacing: 0.30em;
   text-transform: uppercase;
+}
+.underline-txt{
+  position: relative;
+  &:after{
+    background-color: $brand-accent;
+    width: $grid-gutter-four-times;
+    height: 3px;
+    display: block;
+    content: "";
+    margin: $grid-gutter-width auto;
+    margin-top: $grid-gutter-width - $grid-gutter-quarter;
+  }
+}
+.underline-txt-left{
+  position: relative;
+  &:after{
+    background-color: $brand-accent;
+    width: $grid-gutter-four-times;
+    height:3px;
+    display: block;
+    content: "";
+    margin: $grid-gutter-width 0;
+    margin-top: $grid-gutter-width - $grid-gutter-quarter;
+  }
+}
+.underline-txt-left-white{
+  position: relative;
+  &:after{
+    background-color: $white;
+    width: $grid-gutter-four-times;
+    height: 2px;
+    display: block;
+    content: "";
+    margin: $grid-gutter-width 0;
+    margin-top: $grid-gutter-width - $grid-gutter-quarter;
+  }
 }

@@ -4,6 +4,13 @@ $t:                   transparent;
 $logo-primary :       #232428;
 $logo-secodary:        #fff;
 
+$brand-accent: red;
+
+$color-cta:red ; 
+
+$brand-primary :       #232428;
+$brand-secondary:        #fff;
+
 
 $b:                   #232428;
 $black:               #232428;
@@ -24,7 +31,74 @@ $gutter-double-half:   $gutter * 2.5;
 $gutter-triple:        $gutter * 3;
 
 
+// Responsiveness
+$screen-xxs-min: 320px !default;
+$screen-xs-min: 440px !default;
+$screen-sm-min: 768px !default;
+$screen-md-min: 1024px !default;
+$screen-lg-min: 1200px !default;
+$screen-xs-max: ($screen-sm-min - 1) !default;
+$screen-sm-max: ($screen-md-min - 1) !default;
+$screen-md-max: ($screen-lg-min - 1) !default;
+
+
+
 $screen-xs:            30em;
 $screen-sm:            48em;
 $screen-md:            62em;
 $screen-lg:            75em;
+
+
+
+
+
+//** Padding between columns. Gets divided in half for the left and right.
+$grid-gutter-width:         40px !default;
+
+//  Gutter == 10px
+$grid-gutter-width-quarter: $grid-gutter-width / 4;
+
+//  Gutter == 16px
+$grid-gutter-half : $grid-gutter-width / 2.5;
+
+// Half Gutter == 20px
+$grid-gutter-half-width : $grid-gutter-width / 2;
+
+// Quarter Gutter == 10px
+$grid-gutter-quarter : $grid-gutter-width * 0.25;
+
+//Double Gutter == 60px
+$grid-gutter-one-and-half-width : $grid-gutter-width * 1.5;
+
+//Double Gutter == 80px
+$grid-gutter-double-width : $grid-gutter-width * 2;
+
+//100px
+$grid-gutter-two-half-times : $grid-gutter-width * 2.5;
+
+//60px
+$grid-gutter-one-half-times : $grid-gutter-width * 1.5;
+
+//Gutter double and half == 120px
+$grid-gutter-double-half-width: $grid-gutter-width * 2.5;
+
+//120px
+$grid-gutter-three-times: $grid-gutter-width * 3;
+//120px
+$grid-gutter-three-half-times: $grid-gutter-width * 3.5;
+
+//160px
+$grid-gutter-four-times: $grid-gutter-width * 4;
+
+//180px
+$grid-gutter-four-half-times: $grid-gutter-width * 4.5;
+
+//200px
+$grid-gutter-five-times: $grid-gutter-width * 5;
+
+//320px
+$grid-gutter-eight-times: $grid-gutter-width * 8;
+
+
+//400px
+$grid-gutter-ten-times: $grid-gutter-width * 10;

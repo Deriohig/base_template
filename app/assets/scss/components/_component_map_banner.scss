@@ -1,0 +1,169 @@
+.component-map-banner{
+  background-color: $brand-secondary;
+  padding-top: $grid-gutter-one-and-half-width;
+  padding-bottom:$grid-gutter-half-width;
+  @media(max-width: $screen-xs-max){
+    display: none;
+  }
+  .location{
+    width:$grid-gutter-half-width;
+    height:$grid-gutter-half-width;
+    border-radius: $grid-gutter-half-width;
+    background-color: $brand-primary;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    @include transition();
+    &:before{
+      @include transition();
+      content: "";
+      display: block;
+      width:30px;
+      border-radius: 30px;
+      height: 30px;
+      background-color: transparent;
+      border:1px solid $brand-primary;
+      transform: translate(-6px,-6px);
+    }
+
+    &:hover , &.active{
+      @include transition();
+      background-color: $brand-accent;
+      width: 30px;
+      height:30px;
+      outline:none;
+      border-radius: 30px;
+      transform: translate(-50%,-50%);
+      &:before{
+        @include transition();
+        content: "";
+        display: block;
+        width:$grid-gutter-width;
+        border-radius: $grid-gutter-width;
+        height: $grid-gutter-width;
+        background-color: transparent;
+        border:1px solid $brand-accent;
+        transform: translate(-6px,-6px);
+      }
+    }
+  }
+  .info-block{
+    @include transition();
+
+    opacity: 0;
+    min-width: 260px;
+    pointer-events: none;
+    border: 1px solid rgba($black, .5);
+    margin-left: $grid-gutter-one-and-half-width;
+    margin-top: - $grid-gutter-half-width;
+    padding: $grid-gutter-half ;
+    padding-right:calc(#{$grid-gutter-width} - 5px);
+    position: absolute;
+    background-color: $white;
+    z-index:18;
+
+    &.active{
+      .close-btn{
+        pointer-events: all;
+      }
+    }
+
+    .close-btn{
+      cursor: pointer;
+
+      font-size: 12px;
+      width:$grid-gutter-half-width;
+      height:$grid-gutter-half-width;
+      color:$white;
+      background-color: $brand-accent;
+      border-radius: $grid-gutter-half-width;
+      line-height:$grid-gutter-half-width;
+      text-align:center;
+      position: absolute;
+      top: $grid-gutter-quarter;
+      right:$grid-gutter-quarter;
+    }
+    .tel{
+      padding-right:$grid-gutter-half-width;
+    }
+    a{
+      color:$black;
+      &:hover{
+        color:$brand-primary;
+      }
+    }
+    &:before{
+      content: "";
+      position: absolute;
+      left:-41px;
+      top:$grid-gutter-half-width;
+      width:40px;
+      height:1px;
+      background-color:$brand-accent;
+    }
+    &.flip-side{
+      margin-right: -100px;
+      margin-left: 0;
+      transform: translate(calc(-100% - 60px),0);
+      -ms-transform: translateX(-100%) translateX(-60px) ;
+      -moz-transform:translate(calc(-100% - 60px),0);
+      -webkit-transform: translate(calc(-100% - 60px),0);
+      &:before{
+        content: "";
+        position: absolute;
+        right:-41px;
+        left:auto;
+        top:$grid-gutter-half-width;
+        width:40px;
+        height:1px;
+        background-color: $brand-accent;
+      }
+    }
+    .space{
+      margin-top: 20px;
+    }
+    .support-btn{
+      margin-left:30px;
+      position: relative;
+      &:before{
+        content: '';
+        background-repeat: no-repeat;
+        width: calculateRem(32px);
+        height: calculateRem(32px);
+        position: absolute;
+        left:-35px;
+        top:-3px;
+        // background-image: url('../images/icons/icon-red-bubble.svg');
+      }
+    }
+  }
+  .title-col{
+    overflow: hidden;
+  }
+  .title-holder{
+    display: inline-block;
+    margin: 0 auto;
+    position: relative;
+    margin-left: 50%;
+    transform: translate(-50%,0);
+  }
+  .main-title{
+    color: $brand-primary;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    &:after{
+      content: "";
+      display: block;
+      width: inherit;
+      height:5px;
+      background-color: $brand-primary;
+      margin:$grid-gutter-half-width 0;
+    }
+  }
+  img{
+    width: 100%;
+  }
+  .image-holder{
+    position: relative;
+  }
+}
