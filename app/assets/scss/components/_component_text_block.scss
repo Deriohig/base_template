@@ -1,13 +1,13 @@
 .component-text-block{
 
   background-color: $white;
-  padding: 2% 8%;
-  @media(max-width:$screen-md){
-      padding: 2% 4%;
-  }
-  @media(max-width:$screen-sm){
-    padding: $grid-gutter-width $gutter-half;
-  }
+  // padding: 2% 8%;
+  // @media(max-width:$screen-md){
+  //     padding: 2% 4%;
+  // }
+  // @media(max-width:$screen-sm){
+  //   padding: $grid-gutter-width $gutter-half;
+  // }
   .title-holder{
     .cp-title{
       margin-bottom: $grid-gutter-width;
@@ -15,7 +15,7 @@
       font-weight: 700;
       color: $brand-primary;
       @media(max-width: $screen-xs){
-        margin-bottom:$grid-gutter-half-width;
+        margin-bottom:$gutter-quarter;
       }
     }
   }
@@ -24,7 +24,11 @@
      line-height: 1.4;
      font-size: 20px;
      color: $black;
-   }
+     @media(max-width:$screen-sm){
+      font-size: 17px;
+      line-height: 1.7
+     }
+    }
   }
   .cp-content{
     line-height: 1.4;

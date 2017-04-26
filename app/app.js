@@ -428,17 +428,38 @@ function scrollFooter(scrollY, heightFooter)
     }
 }
 
+jQuery(window).on('resize', function(){
+    var windowHeight        = jQuery(window).height(),
+        footerHeight        = jQuery('footer').height(),
+        heightDocument      = (windowHeight) + (jQuery('.content').height()) + (jQuery('footer').height()) - 20;
+
+
+    jQuery('#scroll-animate, #scroll-animate-main').css({
+        'height' :  heightDocument + 'px'
+    });
+
+
+    jQuery('header').css({
+        'height' : windowHeight + 'px',
+        'line-height' : windowHeight + 'px'
+    });
+
+    jQuery('.wrapper-parallax').css({
+        'margin-top' : windowHeight + 'px'
+    });
+});
+
 jQuery(document).ready(function(){
     var windowHeight        = jQuery(window).height(),
         footerHeight        = jQuery('footer').height(),
         heightDocument      = (windowHeight) + (jQuery('.content').height()) + (jQuery('footer').height()) - 20;
 
-    // Definindo o tamanho do elemento pra animar
+
     jQuery('#scroll-animate, #scroll-animate-main').css({
         'height' :  heightDocument + 'px'
     });
 
-    // Definindo o tamanho dos elementos header e conteúdo
+
     jQuery('header').css({
         'height' : windowHeight + 'px',
         'line-height' : windowHeight + 'px'

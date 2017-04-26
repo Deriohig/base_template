@@ -6,7 +6,7 @@ $logo-secodary:        #fff;
 
 $brand-accent: red;
 
-$color-cta:red ; 
+$color-cta:red ;
 
 $brand-primary :       #232428;
 $brand-secondary:        #fff;
@@ -24,6 +24,7 @@ $color-accent:         $white;
  // gutter variables
 
 $gutter:               40px;
+$gutter-quarter:       $gutter * .25;
 $gutter-half:          $gutter / 2;
 $gutter-one-half:      $gutter * 1.5;
 $gutter-double:        $gutter * 2;

@@ -1,14 +1,14 @@
 .component-three{
-  padding: 2% 8%;
-  @media(max-width:$screen-md){
-      padding: 2% 4%;
-  }
-  @media(max-width:$screen-sm){
-    padding: 0%;
-  }
+  // padding: 2% 8%;
+  // @media(max-width:$screen-md){
+  //     padding: 2% 4%;
+  // }
+  // @media(max-width:$screen-sm){
+  //   padding: 0%;
+  // }
   @media(max-width: $screen-xs){
     height:auto;
-    padding-bottom:60px;
+    // padding-bottom:60px;
 
   }
  background-color: $color-primary;
