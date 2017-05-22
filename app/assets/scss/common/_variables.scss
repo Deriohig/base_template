@@ -4,9 +4,9 @@ $t:                   transparent;
 $logo-primary :       #232428;
 $logo-secodary:        #fff;
 
-$brand-accent: red;
+$brand-accent: #F44336;
 
-$color-cta:red ;
+$color-cta: #F44336 ;
 
 $brand-primary :       #232428;
 $brand-secondary:        #fff;
@@ -42,15 +42,10 @@ $screen-xs-max: ($screen-sm-min - 1) !default;
 $screen-sm-max: ($screen-md-min - 1) !default;
 $screen-md-max: ($screen-lg-min - 1) !default;
 
-
-
 $screen-xs:            30em;
 $screen-sm:            48em;
 $screen-md:            62em;
 $screen-lg:            75em;
-
-
-
 
 
 //** Padding between columns. Gets divided in half for the left and right.

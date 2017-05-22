@@ -1,10 +1,14 @@
 .component-feature-blocks{
-  color:$black;
+  background-color: rgba($black, .2);
+  background-image: url('../images/code-screen.png');
+
+  color:$white;
+  background-size: cover;
   position: relative;
   z-index: 2;
   &:before{
       content:"";
-      background-color: rgba($black, .3);
+      background-color: rgba($black, .7);
       position: absolute;
       top: 0;
       left: 0;
@@ -14,6 +18,13 @@
       height: 100%;
 
   }
+  &.minimal{
+    padding-top:40px;
+    padding-bottom: 40px;
+    @media(max-width:$screen-sm){
+      padding:0;
+    }
+  }
   .row{
     background-position: center center;
     background-size: cover;
@@ -21,22 +32,87 @@
 
   }
 
-
+  .wellman{
+    &:hover{
+    background-color: rgba(#e13c5f,.9);
+    }
+    &:before{
+      background-image: url('../images/welman.png');
+    }
+  }
+  .cu{
+    &:hover{
+    background-color: rgba(#e13c5f,.9);
+    }
+    &:before{
+      background-image: url('../images/credit-union.png');
+      background-size: 45% !important;
+    }
+  }
+  .dpd{
+    &:hover{
+    background-color: rgba(#e13c5f,.9);
+    }
+    &:before{
+      background-image: url('../images/sd_clientlogo-21.png');
+    }
+  }
+  .dig-hub{
+    position: relative;
+    &:hover{
+      background-color:rgba(#e13c5f,.9);
+    }
+    &:before{
+      background-image: url('../images/sd_clientlogo_thedigitalhub.png');
+    }
+  }
 
   .news-block{
     @include transition();
-    background-color: rgba($black, .3);
-
-    border:1px solid $white;
+    border:1px solid white;
     padding: 2% 4%;
+    background-color: rgba(234,234,234,.85);
+    &:before{
+      @include transition();
+      content:"";
+      position: absolute;
+      top: 0;
+      left:0;
+      right:0;
+      bottom: 0;
+      background-position: center center;
+      background-size: 65%;
+      background-repeat: no-repeat;
+      // -webkit-filter: brightness(8);
+      //  filter: brightness(8) ;
+      -webkit-filter: contrast(0%);
+       filter: contrast(0%);
+
+    }
     @media(max-width:$screen-md){
         padding: 2% 6%;
     }
     @media(max-width:$screen-sm){
         padding: $grid-gutter-width $gutter-half;
     }
+    &:hover{
+      &:before{
+        @include transition();
+        opacity: 0
+      }
+      .button-holder{
+        @include transition();
+       opacity:  1;
+      }
+      .text-area{
+        @include transition();
+        opacity:  1;
+      }
+    }
     .text-area{
-      color: $black;
+      @include transition();
+      opacity:  0;
+      color: $white;
       h4{
         margin-bottom: $grid-gutter-half-width;
       }
@@ -48,11 +124,11 @@
       }
     }
     .button-holder{
-
-
-      a{
-
-        width: 50%;
+      @include transition();
+      opacity:  0;
+        a{
+        border:1px solid transparent;
+        width: 100%;
         @media(max-width: $screen-sm){
           width: 100%;
         }
@@ -63,7 +139,7 @@
       }
     }
     &:hover{
-      background-color: rgba($black, .3);
+      // background-color: rgba($black, .3);
       .text-area{
         color: $white !important;
       }

@@ -1,3 +1,4 @@
+
 import font from './assets/scss/common/_font.scss';
 import styles from './assets/scss/main.scss';
 
@@ -36,15 +37,17 @@ isLoading = true;
 
 setTimeout(function() {
     triggerSlowLoad("hmmmmmmm, Still Loading");
-}, 6000);
+}, 8000);
 setTimeout(function() {
     triggerSlowLoad("You have potato Internet...");
-}, 12000);
+}, 14000);
 
 window.onload = function() {
-    loader.style.display = "none";
-    isLoading = false;
 
+    setTimeout(function() {
+      loader.style.display = "none";
+        isLoading = false;
+    }, 4000);
 };
 
 // Set a timer that shows a message after 6 seconds if the page is still loading
@@ -158,8 +161,9 @@ function render() {
         Math.min(tail, skill.length - $.skillP));
     setTimeout(render, timeout);
 }
-setTimeout(render, 500);
-
+if(!jQuery('header').hasClass('reg-header')){
+  setTimeout(render, 500);
+}
 var Doggo = {
 
     load: function(url, callback) {
@@ -262,31 +266,110 @@ if (document.getElementsByClassName('component-two') > 0) {
     Doggo.getDoggoGallery();
 }
 
+function isDescendant(parent, child) {
+     var node = child.parentNode;
+     while (node != null) {
+         if (node == parent) {
+             return true;
+         }
+         node = node.parentNode;
+     }
+     return false;
+}
+
+function closest(el, selector) {
+    var matchesFn;
+
+    // find vendor prefix
+    ['matches','webkitMatchesSelector','mozMatchesSelector','msMatchesSelector','oMatchesSelector'].some(function(fn) {
+        if (typeof document.body[fn] == 'function') {
+            matchesFn = fn;
+            return true;
+        }
+        return false;
+    })
+
+    var parent;
+
+    // traverse parents
+    while (el) {
+        parent = el.parentElement;
+        if (parent && parent[matchesFn](selector)) {
+            return parent;
+        }
+        el = parent;
+    }
+
+    return null;
+}
+
+
 const pgurl = window.location.href.substr(window.location.href.lastIndexOf("/") + 1);
 
 const elements = document.querySelectorAll(".nav-list li a");
 
 
 elements.forEach(function(elem, index) {
+
+    console.log(elem.href);
+    if(elem.href == "#"){
+      console.log("calling");
+      elem.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+      });
+    }
     if (elem.href.substr(elem.href.lastIndexOf("/") + 1) == pgurl || elem.href == ''){
         elem.classList.add("active");
+        let parent = elem.closest('li');
+
+        if(closest(parent,'li') ){
+          var outter = closest(parent,'li');
+          var anchor = outter.querySelector('a');
+          anchor.classList.add("active");
+        }
+
+
     }
+
 })
 
 
-function mapPointsToImage(points, element){
+var anchors = document.querySelectorAll('a');
+
+anchors.forEach(function(elem, index){
+
+  elem.addEventListener('click', function(event){
+    if(this.href == "#"){
+      console.log("yep");
+      return
+    }
+  });
+});
+
+
+
+function mapPointsToImage(points, element, source){
     points.map(function(point, index){
         // create ugly but fast html element with values
         let flip= "";
+        let active = "";
+        let show = "";
 
         if(point.xAxis > 55){
             flip = "flip-side";
         }
 
+        if(point.active){
+          active = "opacity:1;"
+          show = "active" ;
+
+        }
+
         let mapItem =
-                        "<a class='location' href='#' data-attr='location-point-" + index + "' data-x='"+ point.xAxis + "%' data-y='"+ point.yAxis +"%' style='left: " + point.xAxis + "%; top:" + point.yAxis + "%' ></a> " +
-                        "<div class='info-block col-lg-4 col-md-4 " + flip + "' data-attr='location-point-" +  index + "' > "+
-                        " <div class='close-btn'><i class='fa fa-close'></i></div> <div class='text-area'> <h4> " + point.title + " </h4> <p class='p-14 bold text-brand-primary'>" + point.message + "</p></div></div>";
+                        "<a class='location "+ show +"' href='#' data-attr='"+ source  +"-point-" + index + "' data-x='"+ point.xAxis + "%' data-y='"+ point.yAxis +"%' style='left: " + point.xAxis + "%; top:" + point.yAxis + "%;' ></a> " +
+                        "<div class='info-block col-lg-4 col-md-4 " + flip + "' data-attr='"+ source + "-point-" +  index + "' style=' "+ active +"' > "+
+                        " <div class='close-btn'><i class='close rounded'></i></div> <div class='text-area'> <h4> " + point.title + " </h4> <p class='p-14 bold text-brand-primary'>" + point.message + "</p></div></div>";
                         element.querySelector('.image-holder').innerHTML += mapItem;
     });
 
@@ -356,6 +439,7 @@ if (document.getElementsByClassName('component-map-banner')) {
 
     const mapPoints = {
         home: [{
+                active: true,
                 title: "title",
                 xAxis: "80",
                 yAxis: "80",
@@ -363,14 +447,14 @@ if (document.getElementsByClassName('component-map-banner')) {
             },
             {
                 title: "title",
-                xAxis: "50",
-                yAxis: "50",
+                xAxis: "95.5",
+                yAxis: "6",
                 message: "Point message"
             },
             {
                 title: "title",
-                xAxis: "10",
-                yAxis: "10",
+                xAxis: "21",
+                yAxis: "9",
                 message: "Point message"
             },
             {
@@ -390,7 +474,123 @@ if (document.getElementsByClassName('component-map-banner')) {
                 xAxis: "90",
                 yAxis: "90",
                 message: "Point message"
+            }
+        ],
+        creditUnion: [{
+
+                title: "The Calculator",
+                xAxis: "23",
+                yAxis: "8",
+                message: "The loan calculator is used to calculate loans using the PMT formula, which calculates a value from a loan amount, reoccuring payments, and a constant interest rate. The calculator can be completely configured in the backend of the site with icons, titles, subtitles, APR, loan term max and min, loan amount max and min, and sucess messages "
             },
+            {
+                title: "Parallax",
+                xAxis: "6",
+                yAxis: "30",
+                message: "The Credit Union framework uses parallax on the majority of its images."
+            },
+            {
+                title: "Component based",
+                xAxis: "6",
+                yAxis: "50.5",
+                message: "Everything is built as a component, meaning it is reusable in the backend of the sites. All you need to do is simply pick a component, and fill in the relevent information such as text, icons, and button links. "
+            },
+            {
+                title: "Clean, balanced, layout.",
+                xAxis: "6",
+                yAxis: "68.5",
+                message: "The layout for the credit unions are clear and concise. A professional apearance with a bit of style, it is clean and understated."
+            },
+        ],
+        dpdLocator: [
+            {
+                active: true,
+                title: "List View and Map view",
+                xAxis: "95.5",
+                yAxis: "6",
+                message: "The locator has both a list view and a map view. The list view enables a more detailed breakdown of the close locations, while the map view enables a broader search."
+            },
+            {
+                title: "Filtering",
+                xAxis: "21",
+                yAxis: "8",
+                message: "DPD needed to be able to filter their locations by a number of criteria. Opening times, opening days, location types, location accessability and services, "
+            },
+            {
+                title: "Location detailing",
+                xAxis: "48",
+                yAxis: "69",
+                message: "All locations come with information layouts that can be used within search and filter terms"
+            },
+            {
+                title: "location Markers",
+                xAxis: "26.5",
+                yAxis: "21.5",
+                message: "Customisable locations markers change depending on the location type."
+            }
+        ],
+        merlynLocator: [{
+                title: "Clusters",
+                xAxis: "56",
+                yAxis: "35.5",
+                message: "When there are more than one location in the viewable area, locations cluster together using the Marker Clusterer API"
+            },
+            {
+                title: "Clean muted layout",
+                xAxis: "20",
+                yAxis: "6.5",
+                message: "The Meryln locator needed a new layout. The muted colors pallete was modern, yet classy, further afirming the brands identity as a high end retailer. "
+            },
+            {
+                title: "Current location point",
+                xAxis: "69",
+                yAxis: "80",
+                message: "The current location point is customised to follow the color scheme of the Merlyn locator"
+            },
+            {
+                title: "Location Changing",
+                xAxis: "20",
+                yAxis: "23",
+                message: "The Merlyn locator automatically detects your GPS location after confirmimng with your browser, but this locators filters worked based off distance. Therefore we needed a way to override the GPS location. This was done with a street address search from google and resetting the location with the new user defined co-ord's."
+            },
+
+        ],
+        digitalHub: [
+            {
+                active: true,
+                title: "feature video",
+                xAxis: "5",
+                yAxis: "5",
+                message: "The Digital Hub has a skilled, engaged userbase so keeping up with the latest web trends was important. The header uses a background video to set the tone of a productive, innovitave website."
+            },
+            {
+                title: "Parallax",
+                xAxis: "16",
+                yAxis: "18",
+                message: "The Digital Hub website uses parallax. When scrolling, the elements of the page scroll along with it. "
+            },
+            {
+                title: "Masonary Grid",
+                xAxis: "6.5",
+                yAxis: "47",
+                message: "A bespoke masonary grid, the grid allows for different categories to be displayed depending on a series of different criteria all defined by the Digital Hub in their backend. It allows them to feature jobs, news, events, and social media posts."
+            },
+            {
+                title: "Members area",
+                xAxis: "92",
+                yAxis: "1.5",
+                message: "The members area is what I was responsible for developing. Only acessable by members of the digital hub community, so unfortunatly can't be shown to you but trust me it was nice :)."
+            },
+        ],
+        wellman: [
+            // {
+            //     active: true,
+            //     title: "feature video",
+            //     xAxis: "5",
+            //     yAxis: "5",
+            //     message: "The Digital Hub has a skilled, engaged userbase so keeping up with the latest web trends was important. The header uses a background video to set the tone of a productive, innovitave website."
+            // },
+            
         ]
     };
 
@@ -402,7 +602,7 @@ if (document.getElementsByClassName('component-map-banner')) {
         var source = elem.getAttribute('map-data');
 
         // get object and pass to map function
-        mapPointsToImage(mapPoints[source], elem);
+        mapPointsToImage(mapPoints[source], elem, source);
 
     });
 
@@ -411,9 +611,8 @@ if (document.getElementsByClassName('component-map-banner')) {
 
 function scrollFooter(scrollY, heightFooter)
 {
-    console.log(scrollY);
-    console.log(heightFooter);
 
+  if(!jQuery('header').hasClass('reg-header')){
     if(scrollY >= heightFooter)
     {
         jQuery('footer').css({
@@ -426,6 +625,7 @@ function scrollFooter(scrollY, heightFooter)
             'bottom' : '-' + heightFooter + 'px'
         });
     }
+  }
 }
 
 jQuery(window).on('resize', function(){
@@ -438,11 +638,12 @@ jQuery(window).on('resize', function(){
         'height' :  heightDocument + 'px'
     });
 
-
-    jQuery('header').css({
-        'height' : windowHeight + 'px',
-        'line-height' : windowHeight + 'px'
-    });
+    if(!jQuery('header').hasClass('reg-header')){
+      jQuery('header').css({
+          'height' : windowHeight + 'px',
+          'line-height' : windowHeight + 'px'
+      });
+    }
 
     jQuery('.wrapper-parallax').css({
         'margin-top' : windowHeight + 'px'
@@ -460,10 +661,12 @@ jQuery(document).ready(function(){
     });
 
 
-    jQuery('header').css({
-        'height' : windowHeight + 'px',
-        'line-height' : windowHeight + 'px'
-    });
+    if(!jQuery('header').hasClass('reg-header')){
+      jQuery('header').css({
+          'height' : windowHeight + 'px',
+          'line-height' : windowHeight + 'px'
+      });
+    }
 
     jQuery('.wrapper-parallax').css({
         'margin-top' : windowHeight + 'px'
@@ -472,20 +675,139 @@ jQuery(document).ready(function(){
     scrollFooter(window.scrollY, footerHeight);
 
     // ao dar rolagem
-    window.onscroll = function(){
-        var scroll = window.scrollY;
+      if(!jQuery('header').hasClass('reg-header')){
+      window.onscroll = function(){
+          var scroll = window.scrollY;
 
-        jQuery('#scroll-animate-main').css({
-            'top' : '-' + scroll + 'px'
-        });
+          jQuery('#scroll-animate-main').css({
+              'top' : '-' + scroll + 'px'
+          });
 
-        jQuery('header').css({
-            'background-position-y' : 50 - (scroll * 100 / heightDocument) + '%'
-        });
+          if(!jQuery('header').hasClass('reg-header')){
+          jQuery('header').css({
+              'background-position-y' : 50 - (scroll * 100 / heightDocument) + '%'
+          });
+          }
 
-        scrollFooter(scroll, footerHeight);
+
+          scrollFooter(scroll, footerHeight);
+      }
     }
 });
+
+function equalHeight(container)
+{
+    var currentTallest = 0,
+        currentRowStart = 0,
+        rowDivs = [],
+        $el,
+        topPosition = 0;
+
+    jQuery(container).each(function()
+    {
+        $el = jQuery(this);
+        jQuery($el).height('auto');
+        topPosition = $el.position().top;
+        var currentDiv = 0;
+
+        if (currentRowStart !== topPosition)
+        {
+            for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++)
+            {
+                rowDivs[currentDiv].height(currentTallest);
+            }
+
+            rowDivs.length = 0; // empty the array
+            currentRowStart = topPosition;
+            currentTallest = $el.height();
+            rowDivs.push($el);
+        }
+
+        else
+        {
+            rowDivs.push($el);
+            currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
+        }
+
+        for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++)
+        {
+            rowDivs[currentDiv].height(currentTallest);
+        }
+    });
+}
+
+
+equalHeight('.row-equal-watch .col-equal');
+
+ jQuery(window).resize(function()
+ {
+     equalHeight('.row-equal-watch .col-equal');
+ });
+
+
+
+// Color checker
+
+
+function checkForMatchingColors(element, colorType, changeToColor, firstColor){
+    function convertHex(hex,opacity){
+      hex = hex.replace('#','');
+      r = parseInt(hex.substring(0,2), 16);
+      g = parseInt(hex.substring(2,4), 16);
+      b = parseInt(hex.substring(4,6), 16);
+
+      result = 'rgb('+r+', ' +g+', '+b+')';
+
+      return result;
+    }
+    var element = document.querySelector(element);
+    var initialColor = convertHex(firstColor);
+    var color = convertHex(changeToColor);
+    var elementColor =  window.getComputedStyle(element).getPropertyValue(colorType);
+    var rect = element.getBoundingClientRect();
+    var backgroundElement = document.elementFromPoint((rect.left - 1), (rect.top - 1) );
+    var bgElemColor = window.getComputedStyle(backgroundElement).getPropertyValue("background-color");
+    if(bgElemColor == "rgba(0, 0, 0, 0)"){
+      var bgElemColor = window.getComputedStyle(backgroundElement).getPropertyValue("color");
+    }
+
+    if(bgElemColor == elementColor){
+     if(elementColor == color){
+       console.log("to white");
+       element.style.color = initialColor;
+     }else{
+       console.log("to orange");
+       element.style.color = color;
+     }
+    }
+}
+
+// window.onscroll = function(){
+//    console.log('lvpokd');
+//    checkForMatchingColors('.track-colors', "color", "" , "#ffffff");
+//  }
+
+jQuery(document).ready(function(){
+	jQuery('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function(){
+
+    jQuery('nav').fadeToggle();
+		jQuery(this).toggleClass('open');
+    jQuery('header');
+    if(!jQuery('header').hasClass('reg-header')){
+      if(jQuery('header').hasClass('initialised')){
+        jQuery('body').css('overflow', 'auto');
+        jQuery('header').css('zIndex', "-1");
+        jQuery('header').removeClass('initialised');
+      }else{
+        jQuery('body').css('overflow', 'auto');
+        jQuery('body').css('overflow', 'hidden');
+        jQuery('header').css('zIndex', "2");
+        jQuery('header').addClass('initialised');
+      }
+    }
+	});
+});
+
 
 
 

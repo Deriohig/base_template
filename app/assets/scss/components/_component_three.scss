@@ -6,21 +6,28 @@
   // @media(max-width:$screen-sm){
   //   padding: 0%;
   // }
+
+  padding:80px 0;
   @media(max-width: $screen-xs){
     height:auto;
     // padding-bottom:60px;
 
+
   }
- background-color: $color-primary;
+ background-color: $white;
  background-repeat: no-repeat;
  background-size: 550px;
  @media (max-width: $screen-md) {
    background-size: 70%;
+   padding:$grid-gutter-width $grid-gutter-half-width;
    background-position: center center;
+   padding-top: 70px;
  }
  @media (max-width: $screen-xs) {
+   padding:$grid-gutter-half-width 0;
    background-size: 80%;
    background-position: 50% 1%;
+   padding-top: 50px;
  }
  .container{
    > .row{
@@ -37,16 +44,18 @@
    position: relative;
  }
  .main-title{
-   color: $white;
+   margin:0;
+   color: $black;
    font-weight: 700;
-   text-align: center;
+   text-align: left;
    position: relative;
    &:after{
      content: "";
      display: block;
      width: inherit;
-     height:5px;
-     background-color: $white;
+     height:4px;
+     width: 150px;
+     background-color: $color-cta;
      margin:$gutter-half 0;
    }
  }
@@ -61,13 +70,15 @@
  }
  .m-title {
    margin: $gutter-half 0;
-   color: $white;
+   color: $black;
    font-weight: 700;
    @extend h4;
  }
 
  .loan-holder {
-
+   .image-mask{
+     visibility: visible;
+   }
    height:100%;
    margin: $gutter-half 0;
    text-align: left;
@@ -79,16 +90,16 @@
        font-size:18px;
        line-height: 1.4;
        margin: 0;
-       color: $white;
+       color: $black;
      }
    }
  }
 
  .loan-text {
-   font-size:20px;
+   font-size:18px;
    line-height: 1.4;
    margin: 0;
-   color: $white;
+   color: $black;
    @media (max-width: $screen-xs) {
      padding: 0;
    }

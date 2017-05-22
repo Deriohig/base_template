@@ -28,6 +28,13 @@ var config = {
                //loader: 'file?name=public/fonts/[name].[ext]'
       },
       {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+            'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+            'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
+          ]
+      },
+      {
         test: /\.(sass|scss)$/, //Check for sass or scss file names
         loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader']),
       },

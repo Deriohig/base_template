@@ -1,19 +1,37 @@
 .component-text-block{
 
-  background-color: $white;
-  // padding: 2% 8%;
-  // @media(max-width:$screen-md){
-  //     padding: 2% 4%;
-  // }
-  // @media(max-width:$screen-sm){
-  //   padding: $grid-gutter-width $gutter-half;
-  // }
+  background-color: transparent;
+   padding: 60px 0;
+  position: relative;
+   margin-top: 30px;
+   margin-bottom: -30px;
+   &:before{
+     content: "";
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     right: 0;
+     left:0;
+    background-color: #e13c5f;
+    padding: 60px 0;
+    transform: skewY(-2deg);
+
+   }
+  @media(max-width:$screen-md){
+      padding: $grid-gutter-width $grid-gutter-half-width;
+  }
+  @media(max-width:$screen-sm){
+    padding: $grid-gutter-width $grid-gutter-half-width;
+  }
+  @media(max-width:$screen-xs){
+    padding: $grid-gutter-half-width 0;
+  }
   .title-holder{
     .cp-title{
       margin-bottom: $grid-gutter-width;
       line-height: 1.4;
       font-weight: 700;
-      color: $brand-primary;
+      color: $white;
       @media(max-width: $screen-xs){
         margin-bottom:$gutter-quarter;
       }
@@ -23,10 +41,14 @@
    p{
      line-height: 1.4;
      font-size: 20px;
-     color: $black;
+     color: $white;
      @media(max-width:$screen-sm){
       font-size: 17px;
       line-height: 1.7
+     }
+     a{
+       color:white;
+       text-decoration: underline;
      }
     }
   }

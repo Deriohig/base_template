@@ -9,7 +9,7 @@ $loading-color-full: lighten($b, 50%);
 
 
 .loader-model{
-  display: none;
+  display: block;
   position: fixed;
   top: 0;
   left: 0;

@@ -1,0 +1,132 @@
+/*------------------------------------------------------------------
+[Buttons Stylesheet]
+
+Project:    Digital Hub
+Version:    1.0
+Last change:
+Assigned to:    James O'Brien
+Primary use:    Site
+—————————————————————————————————*/
+// Main Ui btns
+.btn{
+    display: inline-block;
+    text-transform: uppercase;
+    @extend .button-text;
+    color: $white;
+    @include transition;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 0px;
+    text-decoration: none;
+    position: relative;
+    white-space: normal;
+    border:none;
+    padding: 30px;
+    -webkit-backface-visibility: unset; // Chrome bug fix
+    &:hover{
+        color:$white;
+    }
+    &:focus{
+        color: $white;
+    }
+    &:active{
+        color: $white;
+    }
+    &.lg-btn{
+
+    }
+    &.shortcode-btn{
+        margin-bottom: $grid-gutter-half-width;
+        width: 25%;
+        min-width: 300px;
+    }
+    &.auto-btn{
+        width: auto;
+    }
+    &.s-btn{
+        @extend .s-lbl;
+        padding: 15px;
+    }
+    &.color-2{
+        background-color: $brand-primary;
+        &:hover{
+            background-color: $white;
+        }
+    }
+    &.color-3{
+      background-color: $color-cta;
+      &:hover{
+          background-color: $white;
+      }
+    }
+    &.color-5{
+      background-color: $color-cta;
+      &:hover{
+          background-color: $black;
+      }
+    }
+    &.color-6{
+      background-color: $color-cta;
+      &:hover{
+          background-color: $white;
+      }
+    }
+    &.t-btn, &.t-btn-alt{
+        background-color: transparent;
+        border-width: 1px;
+        border-style: solid;
+        &:hover{
+            background-color: transparent;
+        }
+    }
+    &.t-btn{
+        &.color-2{
+            border-color:  $color-cta;
+            color: $color-cta;
+            &:hover{
+                border-color: $white;
+                color: $white;
+            }
+        }
+        &.color-3{
+          border-color:  $color-cta;
+          color: $color-cta;
+          &:hover{
+              border-color: $white;
+              color: $white;
+          }
+        }
+        &.color-5{
+          border-color:  $color-cta;
+          color: $color-cta;
+          &:hover{
+              border-color: $white;
+              color: $white;
+          }
+        }
+    }
+    &.t-btn-alt{
+        border-color: $white;
+        color: $white;
+        &:hover{
+            border:  $color-cta;
+        }
+        &.color-2{
+            &:hover{
+                color:$white;
+                border: $color-cta 1px solid ;
+            }
+        }
+        &.color-3{
+
+        }
+        &.color-5{
+            border-color:  $color-cta;
+            color:  $color-cta;
+            &:hover{
+                border: 1px solid $white;
+                color:$white;
+            }
+        }
+    }
+}

@@ -76,7 +76,7 @@ header
   width: 100%;
   height: 100vh;
   max-height:100vh;
-  background: url(https://raw.githubusercontent.com/hudsonmarinho/header-and-footer-parallax-effect/master/assets/images/bg-header.jpg) no-repeat 50% 50%;
+  // background: url(https://raw.githubusercontent.com/hudsonmarinho/header-and-footer-parallax-effect/master/assets/images/bg-header.jpg) no-repeat 50% 50%;
   top: 0;
   position: fixed;
   z-index: -1;
@@ -90,6 +90,12 @@ footer
   bottom: -300px;
   position: fixed;
   z-index: -1;
+
+  &.reg-footer{
+    bottom: 0;
+    position: relative;
+    z-index: 0
+  }
 }
 
 .content
@@ -98,7 +104,91 @@ footer
   position: relative;
   z-index: 1;
 }
+.close{
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  overflow: hidden;
+  opacity: 1;
+  &:hover {
+    &::before, &::after {
+      @include transition();
+      background: $white;
+    }
+  }
 
+  &::before, &::after {
+    @include transition();
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+
+    margin-top: -1px;
+    background: $white;
+  }
+  &::before {
+    transform:rotate(45deg);
+  }
+  &::after {
+    transform:rotate(-45deg);
+  }
+  &.big {
+    transform: scale(3);
+  }
+  &.hairline {
+    &::before, &::after {
+      height: 1px;
+    }
+  }
+  &.thick {
+    &::before, &::after {
+      height: 4px;
+      margin-top: -2px;
+    }
+  }
+  &.black {
+    &::before, &::after {
+      height: 8px;
+      margin-top: -4px;
+    }
+  }
+  &.heavy {
+    &::before, &::after {
+      height: 12px;
+      margin-top: -6px;
+    }
+  }
+  &.pointy {
+    &::Before, &::after {
+      width: 200%;
+      left: -50%;
+    }
+  }
+  &.rounded {
+    &::before, &::after {
+      border-radius: 5px;
+    }
+  }
+  &.blades {
+    &::before, &::after {
+      border-radius: 5px 0;
+    }
+  }
+  &.warp {
+    &::before, &::after {
+      border-radius: 120% 0;
+    }
+  }
+  &.fat {
+    &::before, &::after {
+      border-radius: 100%;
+    }
+  }
+}
 .wrapper-parallax {
   margin-top: 100%;
   margin-bottom: 300px;
@@ -120,4 +210,159 @@ footer,
   -webkit-transition-timing-function: cubic-bezier(0, 0, 0, 1);
      -moz-transition-timing-function: cubic-bezier(0, 0, 0, 1);
       transition-timing-function: cubic-bezier(0, 0, 0, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Icon 1 */
+
+#nav-icon1, #nav-icon2, #nav-icon3, #nav-icon4 {
+
+  @media(max-width:$screen-sm){
+    display: block;
+  }
+  &.open{
+    z-index: 999999;
+
+  }
+  top: 50px;
+  right: 40px;
+  display: none;
+  float: right;
+  width: 25px;
+  height: 21px;
+  position: fixed;
+
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  &:before{
+    content: "";
+    width: 60px;
+    height: 60px;
+    display: block;
+    background: rgba($color-cta,.5);
+    position: absolute;
+    right: 50%;
+    bottom: 50%;
+    border-radius: 30px;
+    transform: translate(50%, 50%);
+  }
+}
+
+#nav-icon1 span, #nav-icon3 span, #nav-icon4 span {
+  display: block;
+  height: 3px;
+  position: absolute;
+  width: 100%;
+  background: $white;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+
+.icon-facebook{
+  display: inline-block;
+  height:50px;
+  width: 50px;
+  background-image: url('../images/facebook.png');
+  background-size: contain;
+  background-position: center center;
+  filter:blur(0px);
+  @include transition();
+  &:hover{
+    @include transition();
+    filter:blur(1px);
+  }
+}
+
+.icon-linkedin{
+  display: inline-block;
+  height:50px;
+  width: 50px;
+  margin:0 10px;
+  background-image: url('../images/linkedin.png');
+  background-size: contain;
+  background-position: center center ;
+  filter:blur(0px);
+  @include transition();
+  &:hover{
+    @include transition();
+    filter:blur(1px);
+  }
+}
+
+.icon-mail{
+  display: inline-block;
+  height:50px;
+  width: 50px;
+  background-repeat: no-repeat;
+  background-image: url('../images/telegram.png');
+  background-size: contain;
+  background-position: center center;
+  filter:blur(0px);
+  @include transition();
+  &:hover{
+    @include transition();
+    filter:blur(1px);
+  }
+
+}
+
+/* Icon 3 */
+
+#nav-icon3 span:nth-child(1) {
+  top: 0px;
+}
+
+#nav-icon3 span:nth-child(2),#nav-icon3 span:nth-child(3) {
+  top: 9px;
+}
+
+#nav-icon3 span:nth-child(4) {
+  top: 18px;
+}
+
+#nav-icon3.open span:nth-child(1) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+
+#nav-icon3.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#nav-icon3.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+#nav-icon3.open span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
 }

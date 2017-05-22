@@ -1,7 +1,5 @@
 
 .component-one{
-  background-size: cover;
-  background-position: center;
 
   position: relative;
   margin:0;
@@ -19,8 +17,13 @@
     padding-bottom:60px;
 
   }
+  &.darker-bg{
+    &:before{
+        background-color: rgba($b, .75);
+      }
+  }
   &:before{
-      background-color: rgba($b, .3);
+      background-color: rgba($b, .55);
       content: "";
       position: absolute;
       top:0;
@@ -29,16 +32,33 @@
       bottom:0;
   }
 
+  &.feature-header{
+    height:auto;
+    padding-bottom: 180px;
+    max-height: none;
+    @media(max-width: $screen-xs){
+      height:100%;
+      padding-bottom:20px;
+
+    }
+  }
+
   .text-area{
     margin-left: 0;
     margin-top: 200px;
     color:white;
+    padding-left: $gutter;
     // padding-left:$gutter-one-half;
     // padding-right:$gutter;
-    @media(max-width:$screen-sm){
+    @media(max-width: $screen-sm){
        margin: 0 $gutter;
       margin-top: 180px;
+      padding-left: 0;
+
       // padding-left: $gutter;
+    }
+    @media(max-width:$screen-md){
+
     }
     @media(max-width: $screen-xs){
     margin: 0 ;
@@ -50,7 +70,7 @@
       padding-bottom: 20px;
       font-family: "Raleway", sans-serif;
       font-weight: 600;
-      font-size: 50px;
+      font-size: 45px;
       letter-spacing: .0253em;
       text-transform: uppercase;
       margin:0;
@@ -63,15 +83,22 @@
         font-size:32px;
       }
     }
+    .btn{
+      margin-top:20px;
+    }
     p.subtext{
-      max-width: 650px;
+      max-width: 550px;
       line-height:1.4;
       padding-top: $gutter-half;
       color:white;
-      font-size: 30px;
+      font-size: 25px;
       margin:0;
       .flag{
         font-size: 26px;
+      }
+      &.feature{
+        font-size: 20px;
+        margin-bottom:20px;
       }
       @media(max-width: $screen-sm){
       padding-top: 0;

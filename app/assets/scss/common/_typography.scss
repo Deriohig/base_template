@@ -114,7 +114,7 @@ h4, .s-title{
 }
 p, .main-body{
   font-weight: 300;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.4;
   letter-spacing: 0em;
   p{ font-weight: 300;
@@ -157,6 +157,14 @@ p, .main-body{
   line-height: 1em;
   letter-spacing: 0.20em;
   text-transform: uppercase;
+}
+
+.button-text{
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 12px;
+    line-height: 1em;
+    letter-spacing: .2em;
 }
 
 .lbl-alt{

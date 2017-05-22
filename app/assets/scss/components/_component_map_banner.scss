@@ -1,15 +1,69 @@
 .component-map-banner{
-  background-color: $brand-secondary;
+  background-color: $brand-primary;
   padding-top: $grid-gutter-one-and-half-width;
   padding-bottom:$grid-gutter-half-width;
+
+  &.low-pad{
+    padding-top: 20px
+  }
+
+  @media(max-width: $screen-sm){
+    padding:$grid-gutter-width $grid-gutter-half-width;
+  }
   @media(max-width: $screen-xs-max){
-    display: none;
+    padding: $grid-gutter-half-width 0;
+    img{
+        display: none;
+    }
+    .location{
+      display: none;
+    }
+    .image-holder{
+      .info-block{
+        opacity: 1;
+        position: relative;
+        display: block;
+        top: auto !important;
+        left: auto!important;
+        width: 100%;
+        margin: 0 !important;
+        transform: none !important;
+        background-color: $black;
+        padding: 5px 0;
+        .text-area{
+          color:$white;
+        }
+      }
+    }
+    .close-btn{
+      display: none;
+    }
+    .flip-side{
+      &:before{
+        display: none;
+      }
+    }
+  }
+
+  &.fade-grad{
+    .image-holder{
+      &:before{
+        content:"";
+        position: absolute;
+        top: 0;
+        left:0;
+        right:0;
+        bottom:0;
+        background:linear-gradient(to bottom,transparent 90% , $black);
+      }
+
+    }
   }
   .location{
     width:$grid-gutter-half-width;
     height:$grid-gutter-half-width;
     border-radius: $grid-gutter-half-width;
-    background-color: $brand-primary;
+    background-color: $color-cta;
     position: absolute;
     transform: translate(-50%,-50%);
     @include transition();
@@ -21,13 +75,13 @@
       border-radius: 30px;
       height: 30px;
       background-color: transparent;
-      border:1px solid $brand-primary;
-      transform: translate(-6px,-6px);
+      border:1px solid $color-cta;
+      transform: translate(-5px,-5px);
     }
 
     &:hover , &.active{
       @include transition();
-      background-color: $brand-accent;
+      background-color: $black;
       width: 30px;
       height:30px;
       outline:none;
@@ -41,8 +95,8 @@
         border-radius: $grid-gutter-width;
         height: $grid-gutter-width;
         background-color: transparent;
-        border:1px solid $brand-accent;
-        transform: translate(-6px,-6px);
+        border:1px solid $black;
+        transform: translate(-5px,-5px);
       }
     }
   }
@@ -67,13 +121,16 @@
       }
     }
 
+
+
+
     .close-btn{
       cursor: pointer;
-
       font-size: 12px;
       width:$grid-gutter-half-width;
       height:$grid-gutter-half-width;
       color:$white;
+      pointer-events: all;
       background-color: $brand-accent;
       border-radius: $grid-gutter-half-width;
       line-height:$grid-gutter-half-width;
@@ -81,6 +138,11 @@
       position: absolute;
       top: $grid-gutter-quarter;
       right:$grid-gutter-quarter;
+      .close{
+        margin-top: 5px;
+        margin-right: 5px;
+
+      }
     }
     .tel{
       padding-right:$grid-gutter-half-width;
@@ -98,7 +160,7 @@
       top:$grid-gutter-half-width;
       width:40px;
       height:1px;
-      background-color:$brand-accent;
+      background-color:$black;
     }
     &.flip-side{
       margin-right: -100px;
@@ -115,7 +177,7 @@
         top:$grid-gutter-half-width;
         width:40px;
         height:1px;
-        background-color: $brand-accent;
+        background-color: $black;
       }
     }
     .space{
@@ -143,20 +205,19 @@
     display: inline-block;
     margin: 0 auto;
     position: relative;
-    margin-left: 50%;
-    transform: translate(-50%,0);
+    text-align: left;
   }
   .main-title{
-    color: $brand-primary;
+    color: $white;
     font-weight: 700;
-    text-align: center;
+    text-align: left;
     position: relative;
     &:after{
       content: "";
       display: block;
       width: inherit;
-      height:5px;
-      background-color: $brand-primary;
+      height:3px;
+      background-color: $white;
       margin:$grid-gutter-half-width 0;
     }
   }
