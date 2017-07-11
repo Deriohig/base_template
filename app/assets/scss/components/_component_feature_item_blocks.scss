@@ -18,6 +18,14 @@
       height: 100%;
 
   }
+  a.wrap-anchor{
+    text-decoration: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
   &.minimal{
     padding-top:40px;
     padding-bottom: 40px;
@@ -94,7 +102,24 @@
     }
     @media(max-width:$screen-sm){
         padding: $grid-gutter-width $gutter-half;
+        background-color: rgba(#e13c5f,.9);
+        &:before{
+          @include transition();
+          opacity: 0
+        }
+        .button-holder{
+          @include transition();
+         opacity:  1!important;
+        }
+        .text-area{
+          @include transition();
+          opacity:  1!important;
+        }
     }
+    @media(max-width:$screen-xs){
+        padding: $gutter-half;
+    }
+
     &:hover{
       &:before{
         @include transition();

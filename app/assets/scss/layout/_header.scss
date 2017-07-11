@@ -1,7 +1,13 @@
 header{
   background-attachment: fixed;
   background-repeat: repeat;
+  background-position-y:50%;
   background-image: url('../images/pattern.svg');
+
+
+  @media(max-width:$screen-sm){
+    background-position-y:49% !important;
+  }
 
   &.dublin{
     background-attachment: initial;
@@ -98,14 +104,20 @@ header{
             border: 3px solid white;
           }
 
+          @media(max-width:$screen-xs){
+                padding: 0 5px;
+              }
+
       li{
         position: relative;
         letter-spacing: 0.1em;
         color: white;
-
         font-weight: 300;
         line-height:$gutter;
         margin:$gutter 15px;
+        @media(max-width:$screen-xs){
+          margin: 8px;
+        }
         a{
           color: white;
           text-decoration: none;
@@ -161,6 +173,7 @@ header{
           text-align: left;
           border-left: 1px solid $white;
           @media(max-width:$screen-sm){
+            pointer-events: all;
             opacity: 1;
             position: relative;
             right: auto;
@@ -173,6 +186,13 @@ header{
             margin-bottom: $grid-gutter-half-width;
             margin-right: $grid-gutter-half-width;
             margin-left: 0;
+            @media(max-width:$screen-sm){
+              margin: 8px;
+              margin-left: 0;
+              a{
+                padding-left: 15px;
+              }
+            }
             a{
               white-space: nowrap;
               padding-left: $grid-gutter-half-width;

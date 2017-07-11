@@ -10,7 +10,7 @@ var config = {
   output: {
     path: path.resolve(__dirname, 'app/dist'), // `dist` is the destination
     filename: '[name].bundle.js',
-    publicPath: '/assets',
+    publicPath: '../dist/',
   },
   module: {
     rules: [

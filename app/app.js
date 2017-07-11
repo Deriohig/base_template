@@ -30,25 +30,18 @@ function triggerSlowLoad(message) {
         loadingMessage.innerHTML = message;
         fadeIn(loadingMessage);
     } else {
+
         return;
     }
 }
 isLoading = true;
 
-setTimeout(function() {
-    triggerSlowLoad("hmmmmmmm, Still Loading");
-}, 8000);
-setTimeout(function() {
-    triggerSlowLoad("You have potato Internet...");
-}, 14000);
 
-window.onload = function() {
-
-    setTimeout(function() {
-      loader.style.display = "none";
-        isLoading = false;
-    }, 4000);
-};
+setTimeout(function() {
+  jQuery('.loader-model').fadeOut();
+    isLoading = false;
+  equalHeight('.row-equal-watch .col-equal');
+}, 2000);
 
 // Set a timer that shows a message after 6 seconds if the page is still loading
 
@@ -59,10 +52,10 @@ window.onload = function() {
 var prefix = 'Yo, Im Deri and I Love <br>';
 var skills = [
     'JavaScript',
-    'the sun',
     'HTML & CSS',
     'Node.js',
     'Design',
+    'the sun',
     'Living life'
 ].map(function(s) {
     return s + ".";
@@ -583,14 +576,26 @@ if (document.getElementsByClassName('component-map-banner')) {
             },
         ],
         wellman: [
-            // {
-            //     active: true,
-            //     title: "feature video",
-            //     xAxis: "5",
-            //     yAxis: "5",
-            //     message: "The Digital Hub has a skilled, engaged userbase so keeping up with the latest web trends was important. The header uses a background video to set the tone of a productive, innovitave website."
-            // },
-            
+            {
+                active: true,
+                title: "Fixed header",
+                xAxis: "5",
+                yAxis: "1",
+                message: "A fixed header means that the user always has rapid access to other pages."
+            },
+            {
+                title: "clean layout",
+                xAxis: "5",
+                yAxis: "33.5",
+                message: "A clean layout coupled with a stylish use of color, strong typography, and good imagery made it a pleasure to implement."
+            },
+            {
+                title: "Image Mapper",
+                xAxis: "5",
+                yAxis: "60.5",
+                message: "A nice piece of functionality, the image mapper was the inspiration for the one on this site. The original was a php implementation with a series of configurables. My own is a pure Javascript implementation, with my own customisations"
+            },
+
         ]
     };
 
