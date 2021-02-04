@@ -24,15 +24,16 @@ var config = {
       },
       {
                test   : /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-               loader: 'file-loader'
+               loader: 'file-loader',
+               
                //loader: 'file?name=public/fonts/[name].[ext]'
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|svg|webp)$/i,
         loaders: [
-            'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+            'file-loader?hash=sha512&digest=hex&name=[name].[ext]',
             'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
-          ]
+          ],
       },
       {
         test: /\.(sass|scss)$/, //Check for sass or scss file names

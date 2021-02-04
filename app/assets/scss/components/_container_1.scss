@@ -32,6 +32,27 @@
       bottom:0;
   }
 
+  .image-holder {
+    position: absolute;
+    right: 80px;
+    top: 200px;
+    width: 128px;
+    height: 128px;
+    @media(max-width: $screen-sm){
+      display: block;
+      position: relative;
+      width: 128px;
+      height: 128px;
+      top: auto;
+      right: auto;
+      margin-top: 20px;
+      margin-bottom: 20px;
+   }
+  }
+
+  img{
+    max-width: 100%;
+  }
   &.feature-header{
     height:auto;
     padding-bottom: 180px;

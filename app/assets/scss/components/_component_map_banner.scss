@@ -7,6 +7,9 @@
     padding-top: 20px
   }
 
+  .dark {
+    color: #f3f3f3;
+  }
   @media(max-width: $screen-sm){
     padding:$grid-gutter-width $grid-gutter-half-width;
   }

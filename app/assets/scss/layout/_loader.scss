@@ -51,9 +51,9 @@ $loading-color-full: lighten($b, 50%);
   }
   70% {
     box-shadow:
-      0 0 0 $loading-size-full rgba($loading-color-full, .4),
-      0 0 0 $loading-size-full * .75 rgba($loading-color-full, .6),
-      0 0 0 $loading-size-full * .25 rgba($loading-color-full, .8)
+      0 0 0 $loading-size-full rgba($loading-color-full, .2),
+      0 0 0 $loading-size-full * .75 rgba($loading-color-full, .4),
+      0 0 0 $loading-size-full * .25 rgba($loading-color-full, .5)
     ;
     -webkit-filter:blur(8px);
     filter:blur(8px);

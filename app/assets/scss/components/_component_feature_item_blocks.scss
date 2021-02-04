@@ -42,7 +42,7 @@
 
   .wellman{
     &:hover{
-    background-color: rgba(#e13c5f,.9);
+    background-color: rgba(#0072c3,.9);
     }
     &:before{
       background-image: url('../images/welman.png');
@@ -50,7 +50,7 @@
   }
   .cu{
     &:hover{
-    background-color: rgba(#e13c5f,.9);
+    background-color: rgba(#0072c3,.9);
     }
     &:before{
       background-image: url('../images/credit-union.png');
@@ -59,7 +59,7 @@
   }
   .dpd{
     &:hover{
-    background-color: rgba(#e13c5f,.9);
+    background-color: rgba(#0072c3,.9);
     }
     &:before{
       background-image: url('../images/sd_clientlogo-21.png');
@@ -68,10 +68,20 @@
   .dig-hub{
     position: relative;
     &:hover{
-      background-color:rgba(#e13c5f,.9);
+      background-color:rgba(#0072c3,.9);
     }
     &:before{
       background-image: url('../images/sd_clientlogo_thedigitalhub.png');
+    }
+  }
+
+  .ibm{
+    position: relative;
+    &:hover{
+      background-color:rgba(#0072c3,.9);
+    }
+    &:before{
+      background-image: url('../images/ibm-security.png');
     }
   }
 
@@ -102,7 +112,7 @@
     }
     @media(max-width:$screen-sm){
         padding: $grid-gutter-width $gutter-half;
-        background-color: rgba(#e13c5f,.9);
+        background-color: rgba(#0072c3,.9);
         &:before{
           @include transition();
           opacity: 0
